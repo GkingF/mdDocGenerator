@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.intellij") version "1.4.0"
+    id("org.jetbrains.intellij") version "1.10.1"
 }
 
 group = "com.docgenerator"
@@ -15,8 +15,9 @@ dependencies {
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
+// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2021.2")
+    version.set("2022.1.4")
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf("com.intellij.java"))
@@ -30,8 +31,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("212")
-        untilBuild.set("222.*")
+        sinceBuild.set("221")
+        untilBuild.set("231.*")
     }
 
     signPlugin {
