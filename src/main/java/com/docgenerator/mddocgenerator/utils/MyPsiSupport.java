@@ -71,7 +71,7 @@ public abstract class MyPsiSupport {
 
 
     /**
-     * 获得当前类的标识某annotation的方法
+     * Get the method of identifying an annotation of the current class
      *
      * @param psiClass
      * @param annotation
@@ -90,7 +90,7 @@ public abstract class MyPsiSupport {
     }
 
     /**
-     * 获得当前类的标识某annotation的方法
+     * Get the method of identifying an annotation of the current class
      *
      * @param psiClasses
      * @param annotation
@@ -123,7 +123,7 @@ public abstract class MyPsiSupport {
     }
 
     /**
-     * 获得所有拥有该annotation 全限定名称的 psiClass对象
+     * Get all psiClass objects with the fully qualified name of the annotation
      *
      * @param javaFile
      * @param annotation
@@ -218,7 +218,7 @@ public abstract class MyPsiSupport {
     }
 
     /**
-     * 获得annotation 某属性的值
+     * Get the value of an annotation attribute
      *
      * @param psiAnnotation
      * @param attrName
@@ -243,7 +243,7 @@ public abstract class MyPsiSupport {
 
 
     /**
-     * 获得当前选中的文本
+     * Get the currently selected text
      *
      * @param anActionEvent
      * @return
@@ -297,7 +297,7 @@ public abstract class MyPsiSupport {
     }
 
     /**
-     * 解析泛型对应表
+     * Parse the generic correspondence table
      *
      * @return
      */
@@ -325,7 +325,7 @@ public abstract class MyPsiSupport {
     }
 
     /**
-     * 获得字段的泛型信息
+     * Get the generic information of the field
      *
      * @param psiType
      * @param psiField
@@ -343,7 +343,7 @@ public abstract class MyPsiSupport {
     }
 
     /**
-     * 获得字段的泛型信息
+     * Get the generic information of the field
      *
      * @param psiType
      * @param psiParameter

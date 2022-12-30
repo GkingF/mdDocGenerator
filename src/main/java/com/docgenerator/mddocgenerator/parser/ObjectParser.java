@@ -58,7 +58,7 @@ public class ObjectParser extends Parser {
     }
 
     /**
-     * 提前解析后的内容
+     * Parsed content in advance
      *
      * @return
      */
@@ -67,7 +67,7 @@ public class ObjectParser extends Parser {
     }
 
     /**
-     * 将没有Getter方法的字段过滤
+     * Filter fields without Getter methods
      *
      * @return
      */

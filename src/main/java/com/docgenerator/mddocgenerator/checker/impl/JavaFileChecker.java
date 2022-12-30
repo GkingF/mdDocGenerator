@@ -8,7 +8,7 @@ import com.intellij.psi.PsiJavaFile;
 public class JavaFileChecker implements EventChecker {
     @Override
     public boolean check(AnActionEvent event) {
-        //不是JAVA类型不显示
+        //If it is not a JAVA type, it will not be displayed
         PsiJavaFile javaFile = MyPsiSupport.getPsiJavaFile(event);
         return javaFile != null;
     }

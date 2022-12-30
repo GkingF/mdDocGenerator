@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
 // https://mvnrepository.com/artifact/cn.hutool/hutool-all
-    implementation("cn.hutool:hutool-all:5.8.1")
+    implementation("cn.hutool:hutool-all:5.8.11")
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin

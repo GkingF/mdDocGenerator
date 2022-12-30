@@ -57,7 +57,7 @@ public class ControllerDocumentGenerator extends AnAction {
             return Collections.singletonList(parser.getDefinition());
         } else {
             ArrayList<RestFulDefinition> list = new ArrayList<>();
-            //生成类文档
+            //Generate class documentation
             return this.psiMethods.stream().map(e -> {
                 RestParser parser = new RestParser(e);
                 parser.parseDefinition();

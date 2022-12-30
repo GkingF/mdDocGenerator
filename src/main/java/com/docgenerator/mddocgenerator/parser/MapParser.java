@@ -81,7 +81,7 @@ public class MapParser {
     }
 
     /**
-     * 将没有Getter方法的字段过滤
+     * Filter fields without Getter methods
      *
      * @return
      */

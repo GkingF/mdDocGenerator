@@ -45,7 +45,7 @@ public class JavaDocUtils {
     }
 
     /**
-     * 获得某个参数的描述
+     * Get a description of a parameter
      *
      * @param comment
      * @param paramName

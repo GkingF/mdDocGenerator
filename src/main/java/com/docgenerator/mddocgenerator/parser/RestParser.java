@@ -189,7 +189,7 @@ public class RestParser extends Parser {
     }
 
     /**
-     * 获得Controller 的描述
+     * Get the description of Controller
      *
      * @return
      */

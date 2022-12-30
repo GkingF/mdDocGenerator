@@ -8,7 +8,7 @@ import java.util.Set;
 
 
 /**
- * 主要作为生产类的委托类
+ * Mainly as a delegate class for production classes
  *
  * @author Tony Yan
  */
