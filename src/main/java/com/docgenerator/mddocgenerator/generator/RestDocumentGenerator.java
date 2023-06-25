@@ -87,7 +87,8 @@ public class RestDocumentGenerator {
             String layerChat = this.getLayerChat(definition.getLayer());
             stringBuffer.append("|" + layerChat + definition.getName());
             stringBuffer.append("|" + definition.getType());
-            stringBuffer.append("|" + definition.getDesc());
+            String visibleDesc = definition.getDesc().replaceAll("\\p{C}", "");
+            stringBuffer.append("|" + visibleDesc);
             stringBuffer.append("|\n");
             if (definition.getSubFieldDefinitions() != null && !definition.getSubFieldDefinitions().isEmpty()) {
                 stringBuffer.append(this.responseDefinitionTableBody(definition.getSubFieldDefinitions()));
