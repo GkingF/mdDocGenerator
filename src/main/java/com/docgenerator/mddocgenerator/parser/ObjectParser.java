@@ -6,14 +6,20 @@ import com.docgenerator.mddocgenerator.parser.translator.TypeTranslator;
 import com.docgenerator.mddocgenerator.utils.Convertor;
 import com.docgenerator.mddocgenerator.utils.JavaDocUtils;
 import com.docgenerator.mddocgenerator.utils.MyPsiSupport;
+import com.intellij.lang.jvm.JvmClassKind;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
+import com.intellij.psi.PsiJavaDocumentedElement;
 import com.intellij.psi.PsiType;
+import com.intellij.psi.impl.source.PsiEnumConstantImpl;
+import com.intellij.psi.javadoc.PsiDocComment;
 import com.intellij.psi.util.PsiUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ObjectParser extends Parser {
 
@@ -85,7 +91,7 @@ public class ObjectParser extends Parser {
     }
 
     /**
-     * 瑙ｆ瀽
+     * 解析
      *
      * @param psiFields
      */
@@ -98,7 +104,7 @@ public class ObjectParser extends Parser {
 
 
     /**
-     * 鍗曚釜瀛楁閫掑綊瑙ｆ瀽
+     * 单个字段递归解析
      *
      * @param psiField
      * @return
@@ -123,7 +129,17 @@ public class ObjectParser extends Parser {
             definition.setType(TypeTranslator.docTypeTranslate(fieldClass.getQualifiedName()));
         }
 
-        if (definition.getType().equals(TypeTranslator.TYPE_OBJ)) {
+        if (JvmClassKind.ENUM.equals(fieldClass.getClassKind())) {
+            String desc = definition.getDesc();
+            PsiField[] allFields = fieldClass.getAllFields();
+            String names = Arrays.stream(allFields)
+                    .filter(f -> f.getClass().equals(PsiEnumConstantImpl.class))
+                    .map(PsiField::getName)
+                    .collect(Collectors.joining("<br>"));
+            definition.setDesc(desc + ", 可选项: <br>" + names);
+            definition.setType("Enum");
+            return definition;
+        } else if (definition.getType().equals(TypeTranslator.TYPE_OBJ)) {
             PsiClass psiClass = MyPsiSupport.getPsiClass(fieldType);
             if (psiClass != null) {
                 ObjectParser objectParser = new ObjectParser(fieldType, this.project, layer + 1);
