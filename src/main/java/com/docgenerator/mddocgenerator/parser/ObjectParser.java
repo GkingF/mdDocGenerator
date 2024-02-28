@@ -156,6 +156,19 @@ public class ObjectParser extends Parser {
                 genericsType = listGenericsType;
             }
             psiClass = MyPsiSupport.getPsiClass(genericsType);
+
+            if (psiClass != null && JvmClassKind.ENUM.equals(psiClass.getClassKind())) {
+                String desc = definition.getDesc();
+                PsiField[] allFields = psiClass.getAllFields();
+                String names = Arrays.stream(allFields)
+                        .filter(f -> f.getClass().equals(PsiEnumConstantImpl.class))
+                        .map(PsiField::getName)
+                        .collect(Collectors.joining("<br>"));
+                definition.setDesc(desc + ", ¿ÉÑ¡Ïî: <br>" + names);
+                definition.setType("List<Enum>");
+                return definition;
+            }
+
             if (psiClass != null) {
                 ObjectParser objectParser = new ObjectParser(genericsType, this.project, layer + 1);
                 objectParser.parseDefinition();
