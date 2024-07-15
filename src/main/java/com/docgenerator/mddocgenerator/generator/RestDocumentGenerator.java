@@ -1,9 +1,14 @@
 package com.docgenerator.mddocgenerator.generator;
 
+import cn.hutool.core.util.CharUtil;
+import cn.hutool.core.util.StrUtil;
 import com.docgenerator.mddocgenerator.definition.FieldDefinition;
 import com.docgenerator.mddocgenerator.definition.RestFulDefinition;
 
+import java.nio.CharBuffer;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RestDocumentGenerator {
 
@@ -87,7 +92,16 @@ public class RestDocumentGenerator {
             String layerChat = this.getLayerChat(definition.getLayer());
             stringBuffer.append("|" + layerChat + definition.getName());
             stringBuffer.append("|" + definition.getType());
-            String visibleDesc = definition.getDesc().replaceAll("\\p{C}", "");
+            String definitionDesc = definition.getDesc();
+            List<Character> visibleChar = CharBuffer.wrap(definitionDesc.toCharArray())
+                    .chars()
+                    .mapToObj(i -> (char) i)
+                    .filter(c -> !CharUtil.isBlankChar(c))
+                    .collect(Collectors.toList());
+            StringBuilder visibleDesc = new StringBuilder();
+            for (Character ch : visibleChar) {
+                visibleDesc.append(ch);
+            }
             stringBuffer.append("|" + visibleDesc);
             stringBuffer.append("|\n");
             if (definition.getSubFieldDefinitions() != null && !definition.getSubFieldDefinitions().isEmpty()) {
@@ -103,10 +117,20 @@ public class RestDocumentGenerator {
             return stringBuffer.toString();
         }
         for (FieldDefinition definition : fieldDefinitions) {
+            String definitionDesc = definition.getDesc();
+            List<Character> visibleChar = CharBuffer.wrap(definitionDesc.toCharArray())
+                    .chars()
+                    .mapToObj(i -> (char) i)
+                    .filter(c -> !CharUtil.isBlankChar(c))
+                    .collect(Collectors.toList());
+            StringBuilder visibleDesc = new StringBuilder();
+            for (Character ch : visibleChar) {
+                visibleDesc.append(ch);
+            }
             String layerChat = this.getLayerChat(definition.getLayer());
             stringBuffer.append("|" + layerChat + definition.getName());
             stringBuffer.append("|" + definition.getType());
-            stringBuffer.append("|" + definition.getDesc());
+            stringBuffer.append("|" + visibleDesc);
             stringBuffer.append("|" + (definition.isRequire() ? "ÊÇ" : ""));
             stringBuffer.append("|\n");
             if (definition.getSubFieldDefinitions() != null && !definition.getSubFieldDefinitions().isEmpty()) {
