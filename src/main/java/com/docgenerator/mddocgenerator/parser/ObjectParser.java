@@ -91,7 +91,7 @@ public class ObjectParser extends Parser {
     }
 
     /**
-     * 解析
+     * 瑙ｆ瀽
      *
      * @param psiFields
      */
@@ -104,7 +104,7 @@ public class ObjectParser extends Parser {
 
 
     /**
-     * 单个字段递归解析
+     * 鍗曚釜瀛楁閫掑綊瑙ｆ瀽
      *
      * @param psiField
      * @return
@@ -136,7 +136,7 @@ public class ObjectParser extends Parser {
                     .filter(f -> f.getClass().equals(PsiEnumConstantImpl.class))
                     .map(PsiField::getName)
                     .collect(Collectors.joining("<br>"));
-            definition.setDesc(desc + ", 可选项: <br>" + names);
+            definition.setDesc(desc + ", 鍙�夐」: <br>" + names);
             definition.setType("Enum");
             return definition;
         } else if (definition.getType().equals(TypeTranslator.TYPE_OBJ)) {
@@ -164,7 +164,7 @@ public class ObjectParser extends Parser {
                         .filter(f -> f.getClass().equals(PsiEnumConstantImpl.class))
                         .map(PsiField::getName)
                         .collect(Collectors.joining("<br>"));
-                definition.setDesc(desc + ", 可选项: <br>" + names);
+                definition.setDesc(desc + ", 鍙�夐」: <br>" + names);
                 definition.setType("List<Enum>");
                 return definition;
             }

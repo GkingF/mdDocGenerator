@@ -54,29 +54,29 @@ public class RestDocumentGenerator {
     }
 
     public String urlPart() {
-        return "> ÇëÇóURL£º`" + this.definition.getUri() + "`\n";
+        return "> è¯·æ±‚URLï¼š`" + this.definition.getUri() + "`\n";
     }
 
     public String methodPart() {
-        return "> ÇëÇó·½Ê½£º`" + this.definition.getHttpMethod().toUpperCase() + "`,`" + this.definition.getRequestBodyType().toString() + "`\n";
+        return "> è¯·æ±‚æ–¹å¼ï¼š`" + this.definition.getHttpMethod().toUpperCase() + "`,`" + this.definition.getRequestBodyType().toString() + "`\n";
     }
 
     public String requestPart() {
-        StringBuffer stringBuffer = new StringBuffer("### ÇëÇó²ÎÊı\n \n");
+        StringBuffer stringBuffer = new StringBuffer("### è¯·æ±‚å‚æ•°\n \n");
         List<FieldDefinition> fieldDefinitions = this.definition.getRequest();
         if (fieldDefinitions == null || fieldDefinitions.isEmpty()) {
-            stringBuffer.append("ÎŞ²ÎÊı\n");
+            stringBuffer.append("æ— å‚æ•°\n");
             return stringBuffer.toString();
         }
-        stringBuffer.append("|²ÎÊıÃû|ÀàĞÍ|ËµÃ÷|±ØÑ¡|\n");
+        stringBuffer.append("|å‚æ•°å|ç±»å‹|è¯´æ˜|å¿…é€‰|\n");
         stringBuffer.append("|:----    |:---|:----- |-----   |\n");
         stringBuffer.append(this.requestDefinitionTableBody(fieldDefinitions));
         return stringBuffer.toString();
     }
 
     public String responsePart() {
-        StringBuffer stringBuffer = new StringBuffer("### ·µ»Ø²ÎÊı\n \n");
-        stringBuffer.append("|²ÎÊıÃû|ÀàĞÍ|ËµÃ÷|\n");
+        StringBuffer stringBuffer = new StringBuffer("### è¿”å›å‚æ•°\n \n");
+        stringBuffer.append("|å‚æ•°å|ç±»å‹|è¯´æ˜|\n");
         stringBuffer.append("|:----   |:----- |-----   |\n");
         List<FieldDefinition> fieldDefinitions = this.definition.getResponse();
         stringBuffer.append(this.responseDefinitionTableBody(fieldDefinitions));
@@ -131,7 +131,7 @@ public class RestDocumentGenerator {
             stringBuffer.append("|" + layerChat + definition.getName());
             stringBuffer.append("|" + definition.getType());
             stringBuffer.append("|" + visibleDesc);
-            stringBuffer.append("|" + (definition.isRequire() ? "ÊÇ" : ""));
+            stringBuffer.append("|" + (definition.isRequire() ? "æ˜¯" : ""));
             stringBuffer.append("|\n");
             if (definition.getSubFieldDefinitions() != null && !definition.getSubFieldDefinitions().isEmpty()) {
                 stringBuffer.append(this.responseDefinitionTableBody(definition.getSubFieldDefinitions()));
