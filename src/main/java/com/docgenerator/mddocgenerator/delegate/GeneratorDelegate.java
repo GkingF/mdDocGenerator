@@ -22,14 +22,17 @@ public abstract class GeneratorDelegate {
     }
 
     public void doUpdate(AnActionEvent event) {
-        for (EventChecker checker : checkers) {
-            boolean result = checker.check(event);
+//        Thread thread = new Thread(() -> {
+            /*for (EventChecker checker : checkers) {
+                boolean result = checker.check(event);
 
-            if (!result) {
-                event.getPresentation().setEnabled(false);
-                break;
-            }
-        }
+                if (!result) {
+                    event.getPresentation().setEnabled(false);
+                    break;
+                }
+            }*/
+//        });
+//        thread.start();
     }
 
 
